@@ -1,6 +1,9 @@
 # Project-specific ignores
 addons/
 test/
+project.godot
+icon.png.import
+default_env.tres
 
 # Godot-specific ignores
 .import/
