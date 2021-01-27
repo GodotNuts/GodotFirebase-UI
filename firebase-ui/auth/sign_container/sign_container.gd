@@ -1,7 +1,8 @@
 tool
 extends Control
 
-export (bool) var automatic_signup : bool = false setget set_automatic_signup
+export (bool) var automatic_signup : bool = true setget set_automatic_signup
+export (bool) var anonymous_signup : bool = false setget set_anonymous_signup
 
 onready var email_field : FieldContainer = $Container/EmailField
 onready var password_field : FieldContainer = $Container/PasswordField
@@ -24,6 +25,18 @@ func verify_fields() -> bool:
     email = email_field.get_text()
     password = password_field.get_text()
     return not (email in [""," "] and password in [""," "])
+
+func set_automatic_signup(automatic : bool):
+    automatic_signup = automatic
+    if has_node("Container/ButtonsContainer/SignupButton"):
+        $Container/ButtonsContainer/SignupButton.visible = not automatic_signup
+        $Container/ButtonsContainer/Separator.visible = false if (automatic_signup and not anonymous_signup) else true
+
+func set_anonymous_signup(anonymous : bool):
+    anonymous_signup = anonymous
+    if has_node("Container/ButtonsContainer/AnonymousButton"):
+        $Container/ButtonsContainer/AnonymousButton.visible = anonymous_signup
+        $Container/ButtonsContainer/Separator.visible = false if (automatic_signup and not anonymous_signup) else true
 
 func _on_EmailButton_pressed():
     if verify_fields():
@@ -55,8 +68,5 @@ func _on_login_succeeded(login : Dictionary):
 func _on_signup_succeeded(signup : Dictionary):
     emit_signal("signed", signup.localid)
 
-func set_automatic_signup(automatic : bool):
-    automatic_signup = automatic
-    if has_node("Container/ButtonsContainer/SignupButton"):
-        $Container/ButtonsContainer/SignupButton.visible = not automatic_signup
-        $Container/ButtonsContainer/Separator.visible = not automatic_signup
+func _on_AnonymousButton_pressed():
+    Firebase.Auth.login_anonymous()

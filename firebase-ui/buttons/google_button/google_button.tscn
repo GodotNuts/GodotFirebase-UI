@@ -3,7 +3,6 @@
 [ext_resource path="res://firebase-ui/buttons/base_button/base_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://firebase-ui/buttons/res/icons/google-glass-logo.svg" type="Texture" id=2]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 resource_local_to_scene = true
 resource_name = "GoogleButtonResource"

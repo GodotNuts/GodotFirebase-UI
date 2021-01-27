@@ -129,3 +129,4 @@ func set_text_color(_color : Color) -> void:
 
 func get_text() -> String:
     return $Container/FieldEdit.get_text()
+
