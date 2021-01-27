@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://firebase-ui/field_containers/base_field_container/field_container.gd" type="Script" id=1]
+
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+resource_name = "FieldContainerResource"
+content_margin_left = 20.0
+content_margin_right = 25.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 4
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_bottom = 2
+border_color = Color( 0.329412, 0.329412, 0.329412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+draw_center = false
+border_width_bottom = 2
+border_color = Color( 0.329412, 0.329412, 0.329412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+border_width_bottom = 2
+border_color = Color( 0.329412, 0.329412, 0.329412, 1 )
+
+[node name="FieldContainer" type="PanelContainer"]
+anchor_right = 0.391
+anchor_bottom = 0.087
+margin_right = -0.384003
+margin_bottom = -0.200005
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+texture = null
+modulate_color = Color( 1, 1, 1, 1 )
+expand = false
+size = Vector2( 32, 32 )
+text = ""
+text_color = Color( 1, 1, 1, 1 )
+
+[node name="Container" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 375.0
+margin_bottom = 42.0
+custom_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="Container"]
+self_modulate = Color( 0.329412, 0.329412, 0.329412, 1 )
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+stretch_mode = 6
+
+[node name="FieldEdit" type="LineEdit" parent="Container"]
+margin_left = 42.0
+margin_right = 355.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/read_only = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+placeholder_alpha = 0.4
+caret_blink = true

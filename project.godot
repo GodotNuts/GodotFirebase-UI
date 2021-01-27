@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "PanelContainer",
 "class": "CustomBaseButton",
 "language": "GDScript",
-"path": "res://scn/buttons/base_button/base_button.gd"
+"path": "res://firebase-ui/buttons/base_button/base_button.gd"
 }, {
 "base": "PanelContainer",
 "class": "FieldContainer",
 "language": "GDScript",
-"path": "res://scn/field_containers/base_field_container/field_container.gd"
+"path": "res://firebase-ui/field_containers/base_field_container/field_container.gd"
 }, {
 "base": "HTTPRequest",
 "class": "FirebaseAuth",
