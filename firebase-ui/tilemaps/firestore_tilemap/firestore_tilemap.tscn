@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://firebase-ui/tilemaps/firestore_tilemap/firestore_tilemap.gd" type="Script" id=2]
+
+[node name="FirestoreTileMap" type="TileMap"]
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 2 )
