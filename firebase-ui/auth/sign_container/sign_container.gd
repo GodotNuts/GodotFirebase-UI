@@ -10,8 +10,8 @@ onready var password_field : FieldContainer = $Container/PasswordField
 var email : String
 var password : String
 
-signal logged(user_id)
-signal signed(user_id)
+signal logged(login)
+signal signed(signup)
 signal error(message)
 
 func _ready():
@@ -63,10 +63,10 @@ func _on_login_failed(code : int, message : String):
     emit_signal("error", message)
 
 func _on_login_succeeded(login : Dictionary):
-    emit_signal("logged", login.localid)
+    emit_signal("logged", login)
 
 func _on_signup_succeeded(signup : Dictionary):
-    emit_signal("signed", signup.localid)
+    emit_signal("signed", signup)
 
 func _on_AnonymousButton_pressed():
     Firebase.Auth.login_anonymous()
