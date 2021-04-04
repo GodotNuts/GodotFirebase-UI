@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://firebase-ui/auth/google_sign_container/google_sign_container.gd" type="Script" id=1]
+[ext_resource path="res://firebase-ui/buttons/google_button/google_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://firebase-ui/field_containers/token_field/token_field.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 1, 0.886275, 0.639216, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+resource_local_to_scene = true
+resource_name = "FieldContainerResource"
+content_margin_left = 20.0
+content_margin_right = 25.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 4
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+resource_local_to_scene = true
+resource_name = "GoogleButtonResource"
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 4
+shadow_offset = Vector2( 0, 2 )
+
+[node name="GoogleSignContainer" type="PanelContainer"]
+anchor_right = 0.312
+anchor_bottom = 0.306667
+margin_right = 0.511993
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 305.0
+margin_bottom = 169.0
+rect_min_size = Vector2( 290, 0 )
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TokenField" parent="Container" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 290.0
+margin_bottom = 52.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="HSeparator" type="HSeparator" parent="Container"]
+margin_top = 62.0
+margin_right = 290.0
+margin_bottom = 82.0
+custom_styles/separator = SubResource( 3 )
+custom_constants/separation = 20
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Container"]
+margin_top = 92.0
+margin_right = 290.0
+margin_bottom = 154.0
+size_flags_vertical = 10
+custom_constants/separation = 10
+
+[node name="GoogleButton" parent="Container/ButtonsContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 290.0
+margin_bottom = 62.0
+custom_styles/panel = SubResource( 4 )
+
+[connection signal="pressed" from="Container/ButtonsContainer/GoogleButton" to="." method="_on_GoogleButton_pressed"]

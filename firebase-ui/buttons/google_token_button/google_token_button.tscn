@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://firebase-ui/buttons/google_token_button/google_token_button.gd" type="Script" id=1]
+[ext_resource path="res://firebase-ui/buttons/res/icons/token.svg" type="Texture" id=2]
+[ext_resource path="res://firebase-ui/buttons/res/icons/hover.svg" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+resource_name = "GoogleButtonResource"
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 4
+shadow_offset = Vector2( 0, 2 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+
+[node name="GoogleButton" type="PanelContainer"]
+anchor_right = 0.3125
+anchor_bottom = 0.103333
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+texture = ExtResource( 2 )
+modulate_color = Color( 0, 0, 0, 1 )
+expand = true
+size = Vector2( 32, 32 )
+text = "Get Google Token"
+text_color = Color( 0, 0, 0, 1 )
+
+[node name="Container" type="PanelContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 62.0
+rect_clip_content = true
+mouse_filter = 1
+custom_styles/panel = SubResource( 2 )
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Container"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 305.0
+margin_bottom = 47.0
+
+[node name="Icon" type="TextureRect" parent="Container/ButtonContainer"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Text" type="Label" parent="Container/ButtonContainer"]
+margin_left = 36.0
+margin_top = 9.0
+margin_right = 290.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Get Google Token"
+align = 1
+
+[node name="Hover" type="Sprite" parent="Container"]
+modulate = Color( 1, 1, 1, 0.0588235 )
+position = Vector2( 152, 32 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
