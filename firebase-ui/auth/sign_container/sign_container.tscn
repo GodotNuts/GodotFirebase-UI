@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://firebase-ui/field_containers/password_field/password_field.tscn" type="PackedScene" id=1]
 [ext_resource path="res://firebase-ui/field_containers/email_field/email_field.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://firebase-ui/buttons/res/icons/forward_to_inbox-24px.svg" type="Texture" id=4]
 [ext_resource path="res://firebase-ui/auth/sign_container/sign_container.gd" type="Script" id=5]
 [ext_resource path="res://firebase-ui/buttons/anonymous_button/anonymous_button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://firebase-ui/field_containers/base_field_container/field_container.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 15.0
@@ -131,12 +132,13 @@ margin_bottom = 52.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="PasswordField" parent="Container" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 62.0
 margin_right = 290.0
 margin_bottom = 114.0
 custom_styles/panel = SubResource( 3 )
+script = ExtResource( 7 )
+size = Vector2( 32, 32 )
+text = ""
 
 [node name="HSeparator" type="HSeparator" parent="Container"]
 margin_top = 124.0
@@ -149,6 +151,7 @@ custom_constants/separation = 30
 margin_top = 164.0
 margin_right = 290.0
 margin_bottom = 226.0
+size_flags_vertical = 10
 custom_constants/separation = 10
 
 [node name="EmailButton" parent="Container/ButtonsContainer" instance=ExtResource( 3 )]
@@ -204,6 +207,7 @@ margin_top = 96.0
 margin_right = 290.0
 margin_bottom = 158.0
 custom_styles/panel = SubResource( 9 )
+
 [connection signal="pressed" from="Container/ButtonsContainer/EmailButton" to="." method="_on_EmailButton_pressed"]
 [connection signal="pressed" from="Container/ButtonsContainer/SignupButton" to="." method="_on_SignupButton_pressed"]
 [connection signal="pressed" from="Container/ButtonsContainer/AnonymousButton" to="." method="_on_AnonymousButton_pressed"]
