@@ -137,13 +137,21 @@ func _gui_input(event : InputEvent):
         if event.pressed:
             $Container/Hover.visible = true
             pressing = true
+            _pressed()
             emit_signal("pressed")
         else:
             $Container/Hover.visible = false
             $Container/Hover.scale = Vector2()
             pressing = false
+            _released()
             emit_signal("released")
 
 func _process(delta : float):
     if pressing:
         $Container/Hover.scale += Vector2(delta*30,delta*30)
+
+func _pressed() -> void:
+    pass
+
+func _released() -> void:
+    pass 

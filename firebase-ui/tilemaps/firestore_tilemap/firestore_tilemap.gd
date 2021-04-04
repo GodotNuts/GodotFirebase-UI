@@ -12,8 +12,11 @@ export (bool) onready var CreateNew
 export (bool) onready var Update
 
 func _ready() -> void:
-    Firebase.Auth.connect("login_succeeded", self, "on_firebase_login_succeeded")
-    Firebase.Auth.connect("signup_succeeded", self, "on_firebase_login_succeeded")
+    if Firebase.Auth.auth == null or Firebase.Auth.auth.keys().empty():
+        Firebase.Auth.connect("login_succeeded", self, "on_firebase_login_succeeded")
+        Firebase.Auth.connect("signup_succeeded", self, "on_firebase_login_succeeded")
+    else:
+        on_firebase_login_succeeded(null)
     
 func on_firebase_login_succeeded(login_info) -> void:
     if CollectionName:
